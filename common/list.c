@@ -30,6 +30,7 @@
  * Routines for manipulating linked lists
  */
 
+#include "libctf/ctf_impl.h"
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>

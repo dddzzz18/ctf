@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 bin_PROGRAMS = ctfconvert ctfmerge ctfdump
 CFLAGS += -I$(top_srcdir)
 lib_LTLIBRARIES = libpctf.la
-noinst_LTLIBRARIES = libpctfcommon.la libcvt.la
+noinst_LTLIBRARIES = libpctfcommon.la libcvt.la libdwarf.la
 man1_MANS = man/ctfconvert.1 man/ctfmerge.1 man/ctfdump.1
 include_HEADERS = pctf/libctf.h pctf/ctf_api.h pctf/ctf.h
 
@@ -49,8 +49,23 @@ libcvt_la_SOURCES = \
 	cvt/traverse.c \
 	cvt/util.c 
 
+libdwarf_la_SOURCES = \
+	libdwarf/dwarf_abbrev.c \
+	libdwarf/dwarf_attr.c \
+	libdwarf/dwarf_attrval.c \
+	libdwarf/dwarf_cu.c \
+	libdwarf/dwarf_dealloc.c \
+	libdwarf/dwarf_die.c \
+	libdwarf/dwarf_dump.c \
+	libdwarf/dwarf_errmsg.c \
+	libdwarf/dwarf_errno.c \
+	libdwarf/dwarf_finish.c \
+	libdwarf/dwarf_form.c \
+	libdwarf/dwarf_init.c \
+	libdwarf/dwarf_loc.c
+
 ctfconvert_SOURCES = cvt/ctfconvert.c 
-ctfconvert_LDADD = libcvt.la libpctfcommon.la libpctf.la -ldwarf
+ctfconvert_LDADD = libcvt.la libpctfcommon.la libpctf.la libdwarf.la
 
 ctfmerge_SOURCES = cvt/ctfmerge.c 
 ctfmerge_LDADD = libcvt.la libpctfcommon.la libpctf.la

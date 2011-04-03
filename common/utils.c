@@ -46,6 +46,11 @@ getpname(void)
 	p = getexecname();
 #elif HAVE_GETPROGNAME
 	p = getprogname();
+#elif defined(__linux__)
+	{
+		extern char *program_invocation_short_name;
+		p = program_invocation_short_name;
+	}
 #else
 # error dont know how to find my executable name
 #endif

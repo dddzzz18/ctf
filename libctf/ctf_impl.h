@@ -41,7 +41,7 @@
 #if HAVE_SYS_ERRNO_H
 # include <sys/errno.h>
 #endif
-#if HAVE_SYS_SYSMACROS_H
+#ifdef sun
 # include <sys/sysmacros.h>
 #else
 # include "pctf/sysmacros.h"
@@ -93,19 +93,26 @@
 #if HAVE_SYS_ELF_H
 # include <sys/elf.h>
 #endif
-#if HAVE_LIBDWARF_H
-# include <libdwarf.h>
-#endif
 #if HAVE_LIBGEN_H
 # include <libgen.h>
 #endif
-#if HAVE_DWARF_H
-# include <dwarf.h>
-#endif
+#include "libdwarf/dwarf.h"
+#include "libdwarf/libdwarf.h"
 #if HAVE_STDINT_H
 # include <stdint.h>
 #endif
 #include <assert.h>
+#if HAVE_SYS_PARAM_H
+# include <sys/param.h>
+#endif
+#include <signal.h>
+
+#ifndef NBBY
+# define NBBY 8
+#endif
+#ifndef __unused
+# define __unused
+#endif
 
 #ifdef	__cplusplus
 extern "C" {
