@@ -42,6 +42,7 @@
 
 #pragma ident	"%Z%%M%	%I%	%E% SMI"
 
+#include <pctf/pctf_config.h>
 #include <sys/types.h>
 #include <pctf/ctf.h>
 

@@ -49,7 +49,7 @@ unistd.h \
 zlib.h \
 ])
 
-AC_CONFIG_HEADERS(pctf_config.h)
+AC_CONFIG_HEADERS(pctf/pctf_config.h)
 AC_CONFIG_FILES(Makefile)
 AC_OUTPUT
 

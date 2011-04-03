@@ -30,7 +30,7 @@
 
 #pragma ident	"%Z%%M%	%I%	%E% SMI"
 
-#include "pctf_config.h"
+#include "pctf/pctf_config.h"
 
 #define CTF_OLD_VERSIONS
 

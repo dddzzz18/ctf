@@ -4,7 +4,7 @@ CFLAGS += -I$(top_srcdir)
 lib_LTLIBRARIES = libpctf.la
 noinst_LTLIBRARIES = libpctfcommon.la libcvt.la libdwarf.la
 man1_MANS = man/ctfconvert.1 man/ctfmerge.1 man/ctfdump.1
-include_HEADERS = pctf/libctf.h pctf/ctf_api.h pctf/ctf.h
+nobase_include_HEADERS = pctf/libctf.h pctf/ctf_api.h pctf/ctf.h pctf/pctf_config.h
 
 libpctfcommon_la_SOURCES = \
 	common/list.c \
