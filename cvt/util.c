@@ -31,7 +31,7 @@
 
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
-#include "memory.h"
+#include "common/memory.h"
 
 static void (*terminate_cleanup)(void) = NULL;
 

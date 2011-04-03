@@ -31,7 +31,7 @@
 #include <setjmp.h>
 #include "pctf/ctf.h"
 #include "ctftools.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "common/list.h"
 
 #define	HASH(NUM)	((int)(NUM & (BUCKETS - 1)))

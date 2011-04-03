@@ -34,7 +34,7 @@
 #include "ctftools.h"
 #include "common/list.h"
 #include "stack.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "traverse.h"
 
 char *curhdr;

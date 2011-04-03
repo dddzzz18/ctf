@@ -116,7 +116,7 @@
 #include "ctftools.h"
 #include "common/list.h"
 #include "alist.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "traverse.h"
 
 typedef struct equiv_data equiv_data_t;

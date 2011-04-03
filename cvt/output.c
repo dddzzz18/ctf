@@ -33,7 +33,7 @@
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
 #include "common/list.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "traverse.h"
 #include "common/symbol.h"
 

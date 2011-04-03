@@ -30,7 +30,7 @@
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
 #include "strtab.h"
-#include "memory.h"
+#include "common/memory.h"
 
 /*
  * Name of the file currently being read, used to print error messages.  We

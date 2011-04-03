@@ -184,7 +184,7 @@
 #include "ctftools.h"
 #include "ctfmerge.h"
 #include "traverse.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "fifo.h"
 #include "barrier.h"
 

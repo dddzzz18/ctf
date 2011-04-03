@@ -23,7 +23,12 @@ getprogname \
 
 AC_CHECK_LIB(z, uncompress)
 AC_CHECK_LIB(elf, gelf_getshdr)
-AC_CHECK_LIB(dwarf, dwarf_elf_init)
+AC_CHECK_LIB(dwarf, dwarf_elf_init, [
+  AC_MSG_RESULT([you got dwarves])
+],[
+  AC_ERROR([Need libdwarf for ctfconvert to operate])
+])
+
 AC_CHECK_LIB(pthread, pthread_create)
 
 AC_CHECK_HEADERS([ \

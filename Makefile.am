@@ -50,9 +50,9 @@ libcvt_la_SOURCES = \
 	cvt/util.c 
 
 ctfconvert_SOURCES = cvt/ctfconvert.c 
-ctfconvert_LDADD = libcvt.la libpctfcommon.la
+ctfconvert_LDADD = libcvt.la libpctfcommon.la libpctf.la -ldwarf
 
 ctfmerge_SOURCES = cvt/ctfmerge.c 
-ctfmerge_LDADD = libcvt.la libpctfcommon.la
+ctfmerge_LDADD = libcvt.la libpctfcommon.la libpctf.la
 
 

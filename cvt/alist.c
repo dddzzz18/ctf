@@ -34,7 +34,7 @@
 #include "libctf/ctf_impl.h"
 
 #include "alist.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "hash.h"
 
 #define	ALIST_HASH_SIZE	997

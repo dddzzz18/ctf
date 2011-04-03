@@ -26,6 +26,8 @@
 
 #pragma ident	"%Z%%M%	%I%	%E% SMI"
 
+#include "libctf/ctf_impl.h"
+
 /*
  * Routines for memory management
  */
@@ -35,7 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
-#include "memory.h"
+#include "common/memory.h"
 
 static void
 memory_bailout(void)

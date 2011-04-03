@@ -33,7 +33,7 @@
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
 #include "hash.h"
-#include "memory.h"
+#include "common/memory.h"
 
 /*
  * Due to 4432619, the 6.1 compiler will sometimes incorrectly generate pointer

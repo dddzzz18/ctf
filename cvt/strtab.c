@@ -28,7 +28,7 @@
 
 #include "libctf/ctf_impl.h"
 #include "strtab.h"
-#include "memory.h"
+#include "common/memory.h"
 
 #define	STRTAB_HASHSZ	211		/* use a prime number of hash buckets */
 #define	STRTAB_BUFSZ	(64 * 1024)	/* use 64K data buffers by default */

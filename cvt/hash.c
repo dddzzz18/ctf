@@ -32,7 +32,7 @@
 
 #include "libctf/ctf_impl.h"
 #include "hash.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "common/list.h"
 
 struct hash {

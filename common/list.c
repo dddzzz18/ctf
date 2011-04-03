@@ -34,8 +34,8 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include "list.h"
-#include "memory.h"
+#include "common/list.h"
+#include "common/memory.h"
 
 struct list {
 	void *l_data;

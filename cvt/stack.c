@@ -35,7 +35,7 @@
 #include <stdlib.h>
 
 #include "stack.h"
-#include "memory.h"
+#include "common/memory.h"
 
 #define	STACK_SEEDSIZE	5
 

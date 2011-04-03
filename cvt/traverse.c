@@ -33,7 +33,7 @@
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
 #include "traverse.h"
-#include "memory.h"
+#include "common/memory.h"
 
 int (*tddescenders[])(tdesc_t *, tdtrav_data_t *);
 tdtrav_cb_f tdnops[];

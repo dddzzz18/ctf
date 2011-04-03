@@ -31,7 +31,7 @@
 
 #include "libctf/ctf_impl.h"
 #include "ctftools.h"
-#include "memory.h"
+#include "common/memory.h"
 #include "common/symbol.h"
 
 typedef int read_cb_f(tdata_t *, char *, void *);

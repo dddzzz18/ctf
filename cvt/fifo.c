@@ -33,7 +33,7 @@
 #include <stdlib.h>
 
 #include "fifo.h"
-#include "memory.h"
+#include "common/memory.h"
 
 typedef struct fifonode {
 	void *fn_data;
