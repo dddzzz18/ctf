@@ -10,3 +10,12 @@ as unstable and subject to change.
 Instead, it provides those same APIs as supported functions, but these are
 namespaced as pctf (header file and library name; function names are unchanged).
 
+Platforms
+---------
+
+Portable CTF is known to build on the following platforms:
+
+ * Linux
+ * FreeBSD
+ * Darwin/OS X
+
