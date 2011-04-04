@@ -29,7 +29,7 @@
 #ifndef	_LIBDWARF_H_
 #define	_LIBDWARF_H_
 
-#include <libelf.h>
+#include "libctf/ctf_impl.h"
 
 typedef int		Dwarf_Bool;
 typedef off_t		Dwarf_Off;

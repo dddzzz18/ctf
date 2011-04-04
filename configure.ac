@@ -22,7 +22,16 @@ getprogname \
 ])
 
 AC_CHECK_LIB(z, uncompress)
-AC_CHECK_LIB(elf, gelf_getshdr)
+AC_CHECK_LIB(elf, gelf_getshdr, [],[
+  build_gelf=true
+])
+AM_CONDITIONAL([BUILD_ELF], [test "$build_gelf" = true])
+
+AC_CHECK_LIB(dwarf, dwarf_elf_init, [], [
+  build_dwarf=true
+])
+AM_CONDITIONAL([BUILD_DWARF], [test "$build_dwarf" = true])
+
 AC_CHECK_LIB(pthread, pthread_create)
 
 AC_CHECK_HEADERS([ \
@@ -32,19 +41,16 @@ errno.h \
 fcntl.h \
 gelf.h \
 libdwarf.h \
-libelf.h \
 libgen.h \
 limits.h \
 pthread.h \
 stdint.h \
 string.h \
 strings.h \
-sys/elf.h \
 sys/errno.h \
 sys/mman.h \
 sys/param.h \
 sys/stat.h \
-sys/sysmacros.h \
 unistd.h \
 zlib.h \
 ])

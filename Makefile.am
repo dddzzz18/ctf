@@ -2,7 +2,8 @@ AUTOMAKE_OPTIONS = subdir-objects
 bin_PROGRAMS = ctfconvert ctfmerge ctfdump
 CFLAGS += -I$(top_srcdir)
 lib_LTLIBRARIES = libpctf.la
-noinst_LTLIBRARIES = libpctfcommon.la libcvt.la libdwarf.la
+noinst_LTLIBRARIES = libpctfcommon.la libcvt.la
+#noinst_PROGRAMS = ctfcompare
 man1_MANS = man/ctfconvert.1 man/ctfmerge.1 man/ctfdump.1
 nobase_include_HEADERS = pctf/libctf.h pctf/ctf_api.h pctf/ctf.h pctf/pctf_config.h
 
@@ -24,14 +25,33 @@ libpctf_la_SOURCES = \
 	libctf/ctf_subr.c \
 	libctf/ctf_types.c \
 	libctf/ctf_util.c
+if BUILD_ELF
+libpctf_la_SOURCES += \
+	libelf/elf_begin.c libelf/elf_cntl.c libelf/elf_data.c libelf/elf_end.c \
+	libelf/elf_errmsg.c libelf/elf_errno.c libelf/elf_fill.c \
+	libelf/elf_flag.c libelf/elf_getarhdr.c libelf/elf_getarsym.c \
+	libelf/elf_getbase.c libelf/elf_getident.c libelf/elf_hash.c \
+	libelf/elf_kind.c libelf/elf_memory.c libelf/elf_next.c \
+	libelf/elf_phnum.c libelf/elf_rand.c libelf/elf_rawfile.c \
+	libelf/elf_scn.c libelf/elf_shnum.c libelf/elf_shstrndx.c \
+	libelf/elf_strptr.c libelf/elf_update.c libelf/elf_version.c \
+	libelf/gelf_cap.c libelf/gelf_checksum.c libelf/gelf_dyn.c \
+	libelf/gelf_ehdr.c libelf/gelf_fsize.c libelf/gelf_getclass.c \
+	libelf/gelf_move.c libelf/gelf_phdr.c libelf/gelf_rel.c \
+	libelf/gelf_rela.c libelf/gelf_shdr.c libelf/gelf_sym.c \
+	libelf/gelf_syminfo.c libelf/gelf_symshndx.c libelf/gelf_xlate.c \
+	libelf/libelf.c libelf/libelf_align.c libelf/libelf_allocate.c \
+	libelf/libelf_ar.c libelf/libelf_ar_util.c libelf/libelf_checksum.c \
+	libelf/libelf_data.c libelf/libelf_ehdr.c libelf/libelf_extended.c \
+	libelf/libelf_phdr.c libelf/libelf_shdr.c libelf/libelf_xlate.c
+endif
 
 ctfdump_SOURCES = dump/dump.c
-ctfdump_LDADD = libpctfcommon.la
+ctfdump_LDADD = libpctfcommon.la libpctf.la
 
 libcvt_la_SOURCES = \
 	cvt/alist.c \
 	cvt/barrier.c \
-	cvt/compare.c \
 	cvt/ctf.c \
 	cvt/dwarf.c \
 	cvt/fifo.c \
@@ -49,7 +69,8 @@ libcvt_la_SOURCES = \
 	cvt/traverse.c \
 	cvt/util.c 
 
-libdwarf_la_SOURCES = \
+if BUILD_DWARF
+libcvt_la_SOURCES += \
 	libdwarf/dwarf_abbrev.c \
 	libdwarf/dwarf_attr.c \
 	libdwarf/dwarf_attrval.c \
@@ -63,11 +84,15 @@ libdwarf_la_SOURCES = \
 	libdwarf/dwarf_form.c \
 	libdwarf/dwarf_init.c \
 	libdwarf/dwarf_loc.c
+endif
 
 ctfconvert_SOURCES = cvt/ctfconvert.c 
-ctfconvert_LDADD = libcvt.la libpctfcommon.la libpctf.la libdwarf.la
+ctfconvert_LDADD = libcvt.la libpctfcommon.la libpctf.la
 
 ctfmerge_SOURCES = cvt/ctfmerge.c 
 ctfmerge_LDADD = libcvt.la libpctfcommon.la libpctf.la
+
+#ctfcompare_SOURCES = cvt/compare.c 
+#ctfcompare_LDADD = libcvt.la libpctfcommon.la libpctf.la
 
 

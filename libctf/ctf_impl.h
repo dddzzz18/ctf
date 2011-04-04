@@ -81,12 +81,6 @@
 #if HAVE_ZLIB_H
 # include <zlib.h>
 #endif
-#if HAVE_GELF_H
-# include <gelf.h>
-#endif
-#if HAVE_LIBELF_H
-# include <libelf.h>
-#endif
 #if HAVE_PTHREAD_H
 # include <pthread.h>
 #endif
@@ -96,8 +90,6 @@
 #if HAVE_LIBGEN_H
 # include <libgen.h>
 #endif
-#include "libdwarf/dwarf.h"
-#include "libdwarf/libdwarf.h"
 #if HAVE_STDINT_H
 # include <stdint.h>
 #endif
@@ -112,6 +104,20 @@
 #endif
 #ifndef __unused
 # define __unused
+#endif
+
+#if HAVE_GELF_H
+# include <gelf.h>
+#else
+# include "libelf/gelf.h"
+#endif
+
+#if HAVE_LIBDWARF_H
+# include <dwarf.h>
+# include <libdwarf.h>
+#else
+# include "libdwarf/dwarf.h"
+# include "libdwarf/libdwarf.h"
 #endif
 
 #ifdef	__cplusplus
