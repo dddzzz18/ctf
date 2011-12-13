@@ -47,6 +47,7 @@ pthread.h \
 stdint.h \
 string.h \
 strings.h \
+sys/cdefs.h \
 sys/errno.h \
 sys/mman.h \
 sys/param.h \

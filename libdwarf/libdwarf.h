@@ -111,7 +111,9 @@ typedef struct _Dwarf_Error {
 #define DW_DLC_READ        	0	/* read only access */
 
 /* Function prototype definitions. */
-__BEGIN_DECLS
+#ifdef __cplusplus
+extern "C" {
+#endif
 Dwarf_Abbrev	dwarf_abbrev_find(Dwarf_CU, uint64_t);
 Dwarf_AttrValue dwarf_attrval_find(Dwarf_Die, Dwarf_Half);
 Dwarf_Die	dwarf_die_find(Dwarf_Die, Dwarf_Unsigned);
@@ -157,6 +159,8 @@ void		dwarf_dump_strtab(Dwarf_Debug);
 void		dwarf_dump_symtab(Dwarf_Debug);
 void		dwarf_dump_raw(Dwarf_Debug);
 void		dwarf_dump_tree(Dwarf_Debug);
-__END_DECLS
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_LIBDWARF_H_ */

@@ -417,7 +417,7 @@ dwarf_init_abbrev(Dwarf_Debug dbg, Dwarf_CU cu, Dwarf_Error *error)
 	uint64_t form;
 	uint64_t offset;
 	uint64_t tag;
-	u_int8_t children;
+	uint8_t children;
 
 	d = dbg->dbg_s[DWARF_debug_abbrev].s_data;
 

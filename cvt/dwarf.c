@@ -1262,6 +1262,12 @@ static const fp_size_map_t fp_encodings[] = {
 	{ { 0, 0 }, { 0, 0, 0 } }
 };
 
+#ifndef DW_ATE_SUN_interval_float
+#define DW_ATE_SUN_interval_float 0x91
+#endif
+#ifndef DW_ATE_SUN_imaginary_float
+#define DW_ATE_SUN_imaginary_float 0x92
+#endif
 static uint_t
 die_base_type2enc(dwarf_t *dw, Dwarf_Off off, Dwarf_Signed enc, size_t sz)
 {
