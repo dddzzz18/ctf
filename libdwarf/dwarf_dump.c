@@ -66,12 +66,18 @@ get_sht_desc(uint32_t sh_type)
 		return "Section group.";
 	case SHT_SYMTAB_SHNDX:
 		return "Section indexes (see SHN_XINDEX).";
+#ifdef SHT_GNU_verdef
 	case SHT_GNU_verdef:
 		return "Symbol versions provided";
+#endif
+#ifdef SHT_GNU_verneed
 	case SHT_GNU_verneed:
 		return "Symbol versions required";
+#endif
+#ifdef SHT_GNU_versym
 	case SHT_GNU_versym:
 		return "Symbol version table";
+#endif
 #ifdef SHT_AMD64_UNWIND
 	case SHT_AMD64_UNWIND:
 		return "AMD64 unwind";
