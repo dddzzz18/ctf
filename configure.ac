@@ -26,7 +26,15 @@ AC_CHECK_LIB(z, uncompress)
 AC_CHECK_LIB(elf, gelf_getshdr, [],[
   build_gelf=true
 ])
-  build_gelf=true
+case $host in
+  *solaris*)
+    build_gelf=false
+    AC_CHECK_HEADERS([gelf.h])
+    ;;
+  *)
+    build_gelf=true
+    ;;
+esac
 AM_CONDITIONAL([BUILD_ELF], [test "$build_gelf" = true])
 
 AC_CHECK_LIB(dwarf, dwarf_elf_init, [], [
@@ -36,7 +44,6 @@ AM_CONDITIONAL([BUILD_DWARF], [test "$build_dwarf" = true])
 
 AC_CHECK_LIB(pthread, pthread_create)
 
-#gelf.h \
 AC_CHECK_HEADERS([ \
 ctype.h \
 dwarf.h \

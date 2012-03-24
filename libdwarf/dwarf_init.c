@@ -610,7 +610,12 @@ dwarf_elf_read(Dwarf_Debug dbg, Dwarf_Error *error)
 	}
 
 	/* Get the section index to the string table. */
-	if (elf_getshdrstrndx(dbg->dbg_elf, &dbg->dbg_stnum) == -1) {
+#ifdef sun
+	i = elf_getshstrndx(dbg->dbg_elf, &dbg->dbg_stnum) == 0;
+#else
+	i = elf_getshdrstrndx(dbg->dbg_elf, &dbg->dbg_stnum) == -1;
+#endif
+	if (i) {
 		DWARF_SET_ELF_ERROR(error, elf_errno());
 		return DWARF_E_ELF;
 	}
