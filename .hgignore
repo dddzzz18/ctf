@@ -28,3 +28,8 @@ stamp-h1
 ctfmerge
 ctfconvert
 ctfdump
+config.status.lineno
+configure.lineno
+libelf/libelf_convert.c
+libelf/libelf_fsize.c
+libelf/libelf_msize.c
