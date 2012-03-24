@@ -26,9 +26,6 @@
  * $FreeBSD: src/lib/libelf/libelf_fsize.m4,v 1.2.10.2.2.1 2010/12/21 17:09:25 kensmith Exp $
  */
 
-#include <libelf.h>
-#include <osreldate.h>
-
 #include "_libelf.h"
 
 /*
@@ -36,7 +33,7 @@
  */
 
 divert(-1)
-include(SRCDIR`/elf_types.m4')
+include(`libelf/elf_types.m4')
 
 /*
  * Translations from structure definitions to the size of their file
@@ -118,9 +115,7 @@ DEFINE_ELF_FSIZES(ELF_TYPE_LIST)
 DEFINE_ELF_FSIZE(`IDENT',`')	# `IDENT' is a pseudo type
 
 define(`FSIZE',
-  `#if	__FreeBSD_version >= $3
-    [ELF_T_$1] = { .fsz32 = $1_SIZE32, .fsz64 = $1_SIZE64 },
-#endif')
+  `[ELF_T_$1] = { .fsz32 = $1_SIZE32, .fsz64 = $1_SIZE64 },')
 define(`FSIZES',
   `ifelse($#,1,`',
     `FSIZE($1)

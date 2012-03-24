@@ -58,6 +58,7 @@ extern struct _libelf_globals _libelf;
 
 #define	LIBELF_ELF_ERROR_MASK	0xFF
 #define	LIBELF_OS_ERROR_SHIFT	8
+#define	ROUNDUP2(V,N)	(V) = ((((V) + (N) - 1)) & ~((N) - 1))
 
 #define	LIBELF_SET_ERROR(E, O) do {					\
 	LIBELF_PRIVATE(error) = ((ELF_E_##E & LIBELF_ELF_ERROR_MASK)|	\

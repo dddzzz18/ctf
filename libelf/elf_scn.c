@@ -82,8 +82,11 @@ _libelf_load_scn(Elf *e, void *ehdr)
 
 	i = 0;
 	if (!STAILQ_EMPTY(&e->e_u.e_elf.e_scn)) {
+#ifndef __linux__
+		/* something in here expands to "struct" and breaks compilation */
 		assert(STAILQ_FIRST(&e->e_u.e_elf.e_scn) ==
 		    STAILQ_LAST(&e->e_u.e_elf.e_scn, _Elf_Scn, s_next));
+#endif
 
 		i = 1;
 		src += fsz;

@@ -100,7 +100,7 @@ elf_strptr(Elf *e, size_t scndx, size_t offset)
 					LIBELF_SET_ERROR(DATA, 0);
 					return (NULL);
 				}
-				count = roundup2(count, alignment);
+				count = ROUNDUP2(count, alignment);
 			}
 
 			if (offset < count) {

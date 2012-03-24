@@ -24,6 +24,7 @@
  * SUCH DAMAGE.
  */
 
+#if 0
 #include <sys/cdefs.h>
 __FBSDID("$FreeBSD: src/lib/libelf/libelf_convert.m4,v 1.4.2.3.2.1 2010/12/21 17:09:25 kensmith Exp $");
 
@@ -35,6 +36,7 @@ __FBSDID("$FreeBSD: src/lib/libelf/libelf_convert.m4,v 1.4.2.3.2.1 2010/12/21 17
 #include <libelf.h>
 #include <osreldate.h>
 #include <string.h>
+#endif
 
 #include "_libelf.h"
 
@@ -197,8 +199,6 @@ __FBSDID("$FreeBSD: src/lib/libelf/libelf_convert.m4,v 1.4.2.3.2.1 2010/12/21 17
 		(P)		= (P) + EI_NIDENT;			\
 	} while (0)
 
-#define	ROUNDUP2(V,N)	(V) = ((((V) + (N) - 1)) & ~((N) - 1))
-
 divert(-1)
 
 /*
@@ -222,7 +222,7 @@ divert(-1)
  * treated as being potentially unaligned and no casting can be done.
  */
 
-include(SRCDIR`/elf_types.m4')
+include(`libelf/elf_types.m4')
 
 /*
  * `IGNORE'_* flags turn off generation of template code.
@@ -465,7 +465,7 @@ libelf_cvt$3_$1_tom(char *dst, size_t dsz, char *src, size_t count,
  */
 
 define(`MAKE_TYPE_CONVERTER',
-  `#if	__FreeBSD_version >= $3 /* $1 */
+  `/* $1 */
 ifdef(`BASE'_$1,
     `ifdef(`IGNORE_'$1,`',
       `MAKEPRIM_TO_F($1,$2,`',64)
@@ -479,7 +479,7 @@ ifdef(`BASE'_$1,
        MAKE_TO_F($1,$2,64)dnl
        MAKE_TO_M($1,$2,32)dnl
        MAKE_TO_M($1,$2,64)')')
-#endif /* $1 */
+/* $1 */
 ')
 
 define(`MAKE_TYPE_CONVERTERS',
@@ -507,7 +507,6 @@ libelf_cvt_BYTE_tox(char *dst, size_t dsz, char *src, size_t count,
 
 MAKE_TYPE_CONVERTERS(ELF_TYPE_LIST)
 
-#if	__FreeBSD_version >= 800062
 /*
  * Sections of type ELF_T_GNUHASH start with a header containing 4 32-bit
  * words.  Bloom filter data comes next, followed by hash buckets and the
@@ -701,7 +700,6 @@ libelf_cvt64_GNUHASH_tof(char *dst, size_t dsz, char *src, size_t srcsz,
 
 	return (1);
 }
-#endif
 
 /*
  * Elf_Note structures comprise a fixed size header followed by variable
@@ -847,11 +845,11 @@ define(`CONV',
 
 define(`CONVERTER_NAME',
   `ifdef(`IGNORE_'$1,`',
-    `#if	__FreeBSD_version >= $3
+    `
     [ELF_T_$1] = {
         CONV($1,32,tof), CONV($1,32,tom),
         CONV($1,64,tof), CONV($1,64,tom) },
-#endif
+
 ')')
 
 define(`CONVERTER_NAMES',
@@ -875,14 +873,12 @@ CONVERTER_NAMES(ELF_TYPE_LIST)
 		.tom64 = libelf_cvt_BYTE_tox
 	},
 
-#if	__FreeBSD_version >= 800062
 	[ELF_T_GNUHASH] = {
 		.tof32 = libelf_cvt32_GNUHASH_tof,
 		.tom32 = libelf_cvt32_GNUHASH_tom,
 		.tof64 = libelf_cvt64_GNUHASH_tof,
 		.tom64 = libelf_cvt64_GNUHASH_tom
 	},
-#endif
 
 	[ELF_T_NOTE] = {
 		.tof32 = libelf_cvt_NOTE_tof,

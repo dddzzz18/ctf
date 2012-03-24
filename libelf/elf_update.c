@@ -151,7 +151,7 @@ _libelf_compute_section_extents(Elf *e, Elf_Scn *s, off_t *rc)
 			if ((uint64_t) d->d_off + d->d_size > scn_size)
 				scn_size = d->d_off + d->d_size;
 		} else {
-			scn_size = roundup2(scn_size, d->d_align);
+			scn_size = ROUNDUP2(scn_size, d->d_align);
 			d->d_off = scn_size;
 			scn_size += d->d_size;
 		}

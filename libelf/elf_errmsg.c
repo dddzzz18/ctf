@@ -69,6 +69,10 @@ elf_errmsg(int error)
 	if (error < 0 || error >= ELF_E_NUM)
 		return _libelf_errors[ELF_E_NUM];
 	if (oserr) {
+#if !HAVE_STRLCPY
+# define strlcpy strncpy
+# define strlcat(dst, src, len) strcat(dst, src)
+#endif
 		strlcpy(LIBELF_PRIVATE(msg), _libelf_errors[error],
 		    sizeof(LIBELF_PRIVATE(msg)));
 		strlcat(LIBELF_PRIVATE(msg), ": ", sizeof(LIBELF_PRIVATE(msg)));

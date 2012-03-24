@@ -43,7 +43,18 @@ libpctf_la_SOURCES += \
 	libelf/libelf.c libelf/libelf_align.c libelf/libelf_allocate.c \
 	libelf/libelf_ar.c libelf/libelf_ar_util.c libelf/libelf_checksum.c \
 	libelf/libelf_data.c libelf/libelf_ehdr.c libelf/libelf_extended.c \
-	libelf/libelf_phdr.c libelf/libelf_shdr.c libelf/libelf_xlate.c
+	libelf/libelf_phdr.c libelf/libelf_shdr.c libelf/libelf_xlate.c \
+	libelf/libelf_fsize.c libelf/libelf_msize.c libelf/libelf_convert.c
+
+libelf/libelf_fsize.c: libelf/libelf_fsize.m4
+	m4 libelf/libelf_fsize.m4 > libelf/libelf_fsize.c
+
+libelf/libelf_msize.c: libelf/libelf_msize.m4
+	m4 libelf/libelf_msize.m4 > libelf/libelf_msize.c
+
+libelf/libelf_convert.c: libelf/libelf_convert.m4
+	m4 libelf/libelf_convert.m4 > libelf/libelf_convert.c
+
 endif
 
 ctfdump_SOURCES = dump/dump.c
